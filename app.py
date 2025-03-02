@@ -81,7 +81,7 @@ def search_linkedin(ville):
                 except:
                     location = ""
 
-                if profil_url and ("rh" in description or "ressources humaines" in description or "chargé de recrutement" in description and "it" in description) and any(v in location for v in ["toulouse", "colomiers", "blagnac"]):
+                if profil_url and ("rh" in description or "ressources humaines" in description or "chargé de recrutement" in description and "it" in description) and any(v in location for v in [os.getenv("ville_1"), os.getenv("ville_2"), os.getenv("ville_3")]):
                     profils.append(profil_url)
                     print(f"✅ Profil trouvé : {profil_url} - {description} - {location}")
 
@@ -144,7 +144,7 @@ password = os.getenv('password')
 
 login_linkedin(email, password)
 
-villes = ["toulouse", "colomiers", "blagnac"]
+villes = [os.getenv("ville_1"), os.getenv("ville_2"), os.getenv("ville_3")]
 tous_profils = []
 
 for ville in villes:
